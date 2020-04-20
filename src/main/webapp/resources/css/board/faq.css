@@ -1,0 +1,232 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+#wrap {
+    width: 100%;
+    margin: 0 auto;
+}
+
+ul li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+a:hover {
+    text-decoration: none;
+}
+
+.tabbox{
+    margin: 20px auto 20px auto;
+    width: 100%;
+}
+.tabbox_inner{
+    text-align: center;
+    width: 100%;
+}
+.tab_qna{
+    color: white;
+}
+.tab_qna:hover{
+	color:#dc3545;
+}
+.tab_qnaover{
+    color: white;
+}
+.tab_qnaover:hover{
+	color:#dc3545;
+}
+.tabbox_inner li{
+    width: 30%;
+    list-style: none;
+    display: inline-block;
+    border: 1px solid #343333;
+    padding: 1%;
+}
+.one{
+    width: 1140px;
+        margin: 0 auto;
+}
+.clear{
+    clear: both;
+}
+
+/*아코디언 (누르면 펼쳐지는 기능)*/
+.titlebox{
+
+    float: left;
+    width: 20%;
+    text-align: left;
+    border-top: 3px solid #000;
+}
+.active{
+    background-color: #000;
+}
+.titletex{
+    margin: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.a_qa{
+    width: 70%;
+    float: left;
+    border-top: 1px solid #343333;
+    margin:0 auto;
+    margin-bottom: 10%;
+
+}
+.subject{
+    font-size: 18px;
+    font-weight: 200;
+    padding-left: 7%;
+    padding: 3%;
+    cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+/* .subject:hover{
+    background: #f3f3f3;
+} */
+
+.accordion li{
+    border-bottom: 1px solid #343333;
+}
+.accordion .content {
+    display:none;
+}
+.oline{
+    color: green;
+    font-weight: bold;   
+}
+.Offline{
+    color: dodgerblue;
+    font-weight: bold;  
+}
+.textbold{
+    font-weight: bold;  
+}
+.contents{
+    font-size: 13px;
+    font-weight: 300;
+    padding: 25px 25px;
+    border-top: 1px solid #343333;
+}
+.bnimg{
+    width: 100%;
+}
+.content p{
+    width: 100%;
+}
+
+/*FAQ_2 게시판 CSS*/
+
+/*.banner{
+    width: 1024px;
+    margin: 0 auto;
+    padding: 0px;
+}*/
+
+.opinion{
+
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    font-size: 20px;
+}
+.center{
+    width: 100%;
+    margin: 0 auto;
+    padding: 0px;   
+}
+.mapbox{
+    margin: 0 auto 30px auto;
+    width: 500px;
+    height:300px;
+    border: 1px solid #343333;
+}
+.list{
+    display: table;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    text-align: center;
+    padding: 5%;
+    margin-bottom: -8%;
+}
+
+.list li{
+    margin-bottom: 20px;
+    display: inline-block;
+    padding: 21px 20px;
+    width: calc(50% - 1%);
+    box-sizing: border-box;
+    border: 1px solid #e5e5e5;
+    vertical-align: top;
+    background-color: snow;
+    position: relative;
+    height: 136px;
+}
+
+.li_title{
+    text-align: center;
+    position: relative;
+    width: 16%;
+    vertical-align: middle;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    top:50%;
+    transform: translateY(-50%);
+}
+
+.info{
+    position: absolute;
+    display: inline-block;
+    width: 300px;
+    top: 50%;
+    transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    vertical-align: middle;
+    box-sizing: border-box;
+    right: 0;
+    padding-right: 20px;
+}
+
+li_head{
+    color: #222;
+}
+.under{
+    margin: 0 auto;
+    font-size: 14px;
+    width: 845px;
+    height: 70px;
+    padding: 20px 0px;
+}
+.call{
+    margin-left: 10%;
+}
+.active a{
+    color:#eee;
+}
+
+.all_view{
+    width: 1024px;
+    margin: 100px auto 0 auto;
+}
+.areabox{
+    width: 310px;
+    height: 50px;
+    margin: 20px auto;
+}
+.areatitle{
+    float: left;
+    width: 77px;
+    line-height: 52px;
+}
+.areainfo{
+    float: left;
+    width: 190px;
+}

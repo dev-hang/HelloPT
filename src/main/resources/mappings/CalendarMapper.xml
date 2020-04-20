@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bit.hellopt.data.CalendarMapper">
+	
+	<!-- json으로 받은 월에 해당하는 calender 데이터 -->
+ 	<select id="getMonthList" parameterType="Map" resultType="CalendarVO">
+		SELECT CALENDAR_IDX, FK_USER_ID, SUBSTR(TO_DATE(YYMMDD, 'YYYYMMDD'), 7, 2) YYMMDD, CONTENT, FILE_PATH, C_ORI_VIDEO, C_SYS_VIDEO  
+		  FROM CALENDER_TB  
+		 WHERE (SUBSTR(TO_DATE(YYMMDD, 'YYYYMMDD'), 4, 2)) = #{month}
+		  AND FK_USER_ID = #{fkUserId}
+	</select>
+	
+	<!-- calender 원본 데이터 -->
+	<select id="getCalendar" parameterType="com.bit.hellopt.vo.calendar.CalendarVO" resultType="com.bit.hellopt.vo.calendar.CalendarVO">
+		SELECT *
+		  FROM CALENDER_TB
+	</select>
+	
+	<select id="getOneCalendar" parameterType="int" resultType="com.bit.hellopt.vo.calendar.CalendarVO">
+		SELECT *
+		  FROM CALENDER_TB
+		 WHERE CALENDAR_IDX = #{calendarIdx}
+	</select>
+	
+	<insert id="insertCalVideo" parameterType="HashMap">
+		INSERT INTO CALENDER_TB (CALENDAR_IDX, FK_USER_ID, YYMMDD, CONTENT, FILE_PATH, C_ORI_VIDEO, C_SYS_VIDEO) 
+		VALUES ( CALENDER_TB_SEQ.NEXTVAL , #{fkUserId}  , TO_CHAR(SYSDATE, 'yyyymmdd'), #{content}, #{filePath}, #{cOriVideo}, #{cSysVideo} )
+	</insert>
+	
+	<update id="updateCalVideo" parameterType="HashMap">
+		UPDATE CALENDER_TB SET
+        CONTENT = #{content}, C_ORI_VIDEO = #{cOriVideo}, C_SYS_VIDEO =  #{cSysVideo} , FILE_PATH = #{filePath}
+        WHERE  CALENDAR_IDX = #{calendarIdx}
+	</update>
+	
+	<delete id="deleteCalVideo" parameterType="int">
+		DELETE FROM CALENDER_TB WHERE CALENDAR_IDX = #{calendarIdx} 
+	</delete>
+	
+	<!-- 
+	<select id="getMeetingVO" parameterType="MeetingVO" resultType="MeetingVO">
+		SELECT MEETING_IDX, FK_USER_ID, M_COMMENT, C.M_CATEGORY, L.LOCAL, M_DATE, M_SUBJECT, M_MEMO, DETAILS, 
+			   INCLUDE, M_LOCATION, M_LOCATION_C, M_PRICE, PROGRESS_ST, M_CNT, INS_DT  
+	      FROM MEETING_TB M, M_CATEGORY_CODE_TB C, LOCAL_CODE_TB L 
+	   	 WHERE M.FK_M_CATEGORY_NO = C.M_CATEGORY_NO  
+		   AND M.FK_LOCAL_NO = L.LOCAL_NO
+	</select>
+	
+	<select id="getLocalVO" parameterType="LocalVO" resultType="LocalVO">
+		SELECT * FROM LOCAL_CODE_TB
+	</select>
+	
+	<select id="getCategoryCodeVO" parameterType="CategoryCodeVO" resultType="CategoryCodeVO">
+		SELECT * FROM M_CATEGORY_CODE_TB
+	</select>
+	
+	<select id="getMeetingOne" parameterType="int" resultType="MeetingVO">
+		SELECT MEETING_IDX, M.FK_USER_ID, M_COMMENT, C.M_CATEGORY, L.LOCAL, M_DATE, M_SUBJECT, M_MEMO, DETAILS, INCLUDE, 
+		       M_LOCATION, M_LOCATION_C, M_PRICE, PROGRESS_ST, M_CNT, INS_DT, U.USER_NAME , A.MAX_COUNT
+	      FROM MEETING_TB M, M_CATEGORY_CODE_TB C, LOCAL_CODE_TB L, USERS_TB U, MEETING_APPLY_TB A 
+		 WHERE M.FK_M_CATEGORY_NO = C.M_CATEGORY_NO 
+		   AND M.FK_LOCAL_NO = L.LOCAL_NO 
+		   AND M.FK_USER_ID = U.USER_ID
+		   AND M.MEETING_IDX = A.FK_MEETING_IDX 
+		   AND MEETING_IDX = #{meetingIdx}
+	</select>
+	<select id="getMeetingOneFiles" parameterType="int" resultType="com.bit.hellopt.vo.meeting.MeetingFileVO">
+		SELECT FILE_IDX, FK_MEETING_IDX, FILE_PATH, M_ORI_IMG, M_SYS_IMG
+	      FROM MEETING_TB M, MEETING_FILE_TB F 
+		 WHERE M.MEETING_IDX = F.FK_MEETING_IDX 
+		   AND FK_MEETING_IDX = #{meetingIdx}
+	</select>
+	-->
+	<!-- 뽑힌 시퀀스 번호가 디비에는 =1되어서 들어간다.. 이유가 뭘까...  -->
+	<!--
+	 <insert id="insertMeeting" parameterType="com.bit.hellopt.vo.meeting.MeetingVO">
+	 		<selectKey resultType="int" keyProperty="meetingIdx" order="BEFORE">
+	 			SELECT MEETING_TB_SEQ.NEXTVAL FROM DUAL
+	 		</selectKey>
+
+		INSERT INTO MEETING_TB  
+		      (MEETING_IDX, FK_USER_ID, M_COMMENT, FK_M_CATEGORY_NO, FK_LOCAL_NO, M_DATE, M_SUBJECT, M_MEMO, DETAILS, 
+		       INCLUDE, M_LOCATION, M_LOCATION_C, M_PRICE, PROGRESS_ST, M_CNT, INS_DT) 
+	    VALUES (#{meetingIdx}, #{fkUserId}, #{mComment}, #{fkMCategoryNo}, #{fkLocalNo},  
+			   #{mDate}, #{mSubject}, #{mMemo}, #{details}, #{include} , #{mLocation}, #{mLocationC}, #{mPrice}, 
+			   '진행중', 0, SYSDATE )
+	</insert>
+	-->
+	<!-- 어쩔 수 없이 FK 테이블에 +1 해서  ...  -->
+	<!-- 
+	<insert id="insertMaxMeeting" parameterType="com.bit.hellopt.vo.meeting.MeetingVO">
+		INSERT INTO MEETING_APPLY_TB (FK_MEETING_IDX, FK_USER_ID, MAX_COUNT) 
+		VALUES ( (#{meetingIdx})+1 , #{fkUserId}, #{maxCount} )
+	</insert>
+	<insert id="insertConsentYn" parameterType="com.bit.hellopt.vo.meeting.MeetingVO">
+		INSERT INTO CONSENT_YN_TB (FK_MEETING_IDX, CONSENT_YN, CONSENT_CHK_YN) 
+		VALUES ( (#{meetingIdx})+1 , 'N' , 'N' )
+	</insert>
+	<insert id="insertMeetingFiles" parameterType="HashMap">
+		INSERT INTO MEETING_FILE_TB (FILE_IDX, FK_MEETING_IDX, FILE_PATH, M_ORI_IMG, M_SYS_IMG) 
+		VALUES ( MEETING_FILE_TB_SEQ.NEXTVAL , (#{fkMeetingIdx})+1  , #{filePath}, #{mOriImg}, #{mSysImg} )
+	</insert>
+
+	<update id="updateMeeting" parameterType="com.bit.hellopt.vo.meeting.MeetingVO">
+		UPDATE MEETING_TB SET  
+			   M_COMMENT = #{mComment} , FK_M_CATEGORY_NO = #{fkMCategoryNo}, FK_LOCAL_NO = #{fkLocalNo} , 
+			   M_DATE= #{mDate} , M_SUBJECT = #{mSubject}, M_MEMO = #{mMemo}, DETAILS = #{details}, INCLUDE = #{include}, 
+			   M_LOCATION = #{mLocation}, M_LOCATION_C = #{mLocationC}, M_PRICE = #{mPrice}, INS_DT = SYSDATE 
+	    WHERE  MEETING_IDX = #{meetingIdx}
+	</update>
+	
+	<update id="updateMaxMeeting" parameterType="com.bit.hellopt.vo.meeting.MeetingVO">
+		UPDATE MEETING_APPLY_TB 
+		   SET MAX_COUNT = #{maxCount} 
+	     WHERE FK_MEETING_IDX = #{meetingIdx}
+	</update>
+	
+	<delete id="deleteMeeting" parameterType="int">
+		DELETE FROM MEETING_TB WHERE MEETING_IDX = #{meetingIdx}
+	</delete>
+	 -->
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

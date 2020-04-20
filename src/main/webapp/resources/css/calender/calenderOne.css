@@ -1,0 +1,81 @@
+@import url(https://fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+.calBody {
+	background-color: black;
+	font-family:  'Jeju Gothic', serif;
+}
+
+.calName {
+	color: white;
+	display: inline-block;
+    width: 10%;
+    margin-left: 5px;
+    padding-left: 6px;
+    border-left: 3px solid #b4000f;
+}
+
+.calHd {
+	
+	padding-top: 5px;
+	padding-bottom: 5px;
+	
+}
+
+.calHd2 {
+	
+	border-bottom: 1px solid white;
+	padding-top: 5px;
+	padding-bottom: 10px;
+}
+
+.calHd3 {
+	
+	padding-top:10px;
+	padding-bottom: 5px;
+
+}
+
+.calUser {
+	font-family:  'Jeju Gothic', serif;
+}
+
+.calInsert {
+	border: 1px solid black;
+    width: 98%;
+    margin-left: 3px;
+    margin-top: 6px;
+    padding: 5px 0 7px;
+    background: #b4000f;
+    color: white;
+    font-size: 15px;
+    font-family:  'Jeju Gothic', serif;
+
+}
+
+.fileUpload {
+	border: 0px;
+    margin-bottom: 4px;
+    margin-left: -5px;
+    margin-top: 10px;
+    color: white;
+    cursor: pointer;
+    display: inherit;
+    font-family: 'Jeju Gothic', serif;
+}
+
+.calContent {
+	margin-top: 10px;
+	margin-left: 3px;
+	display: block;
+	font-family:  'Jeju Gothic', serif;
+}
+
+.icon {
+	display: inline;
+    float: right;
+    margin-right: 18px;
+}
+
+.edit {
+	margin-left: 5px;
+}

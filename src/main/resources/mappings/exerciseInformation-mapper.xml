@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bit.hellopt.data.exercise.ExerciseMapper">
+
+	<!-- 전체 게시글 갯수 조회 -->
+	<select id="getExerciseTotalCount" parameterType="Map"  resultType="int">
+		SELECT COUNT(1)
+    	FROM   EXERCISE_INFORMATION_TB
+    	WHERE  1=1
+    	<if test="'EXERCISE_NAME'.equals(searchCondition) ">
+		AND    EXERCISE_NAME LIKE '%'|| #{searchKeyword} ||'%'
+		</if>
+		<if test="'EXERCISE_PARTS'.equals(searchCondition) ">
+		AND    EXERCISE_PARTS LIKE '%'|| #{searchKeyword} ||'%'
+		</if>
+	</select>
+
+	<select id="getExerciseFileList" resultType="com.bit.hellopt.vo.exercise.ExerciseInformationFileVO"
+			parameterType="exerciseInformation">
+
+		SELECT * 
+		FROM   EXERCISE_FILE_TB
+		WHERE  EXERCISE_IDX = #{exerciseIdx}
+	</select>
+
+	<!-- 검색 정보 가져오기 -->
+	<select id="getExerciseInformationList" parameterType="exerciseInformation"	resultType="exerciseInformation">
+<!--  		SELECT * FROM EXERCISE_INFORMATION_TB -->
+<!--  		WHERE 1=1 -->
+		SELECT *
+         FROM (SELECT ROWNUM R_NUM, BBS. * 
+               FROM(SELECT * FROM EXERCISE_INFORMATION_TB
+			 		WHERE 1=1) BBS
+            ) 
+         WHERE R_NUM BETWEEN #{begin} AND #{end}
+
+		<if test="'EXERCISE_NAME'.equals(searchCondition) ">
+			AND EXERCISE_NAME LIKE '%'|| #{searchKeyword} ||'%'
+		</if>
+		<if test="'EXERCISE_PARTS'.equals(searchCondition) ">
+			AND EXERCISE_PARTS LIKE '%'|| #{searchKeyword} ||'%'
+		</if>
+	</select>
+	
+	<!-- VO에서 검색 결과 불러오기 -->
+	<select id="getExerciseInformationSearch" parameterType="Map"		resultType="exerciseInformation">
+<!--  		SELECT * FROM EXERCISE_INFORMATION_TB -->
+<!--  		WHERE 1=1 -->
+		SELECT *
+         FROM (SELECT ROWNUM R_NUM, BBS. * 
+               FROM(SELECT * 
+                    FROM  EXERCISE_INFORMATION_TB
+			 		WHERE 1=1
+			 		<if test="'EXERCISE_NAME'.equals(searchCondition) "> 
+						AND EXERCISE_NAME LIKE '%'|| #{searchKeyword} ||'%'
+					</if>
+					<if test="'EXERCISE_PARTS'.equals(searchCondition)">
+						AND EXERCISE_PARTS LIKE '%'|| #{searchKeyword} ||'%'
+					</if> 
+			 		
+			 		) BBS
+            ) 
+         WHERE R_NUM BETWEEN #{begin} AND #{end}
+		
+	</select>
+	
+	<!-- 게시글 상세보기 -->
+	<select id="getExerciseInformation" parameterType="Map"
+		resultType="exerciseInformation">
+ 		SELECT * FROM EXERCISE_INFORMATION_TB WHERE EXERCISE_IDX = #{exerciseIdx}
+    </select>
+	
+	<!-- 게시글 입력 -->
+	<insert id="insertExerciseInformation" parameterType="exerciseInformation">
+		INSERT INTO EXERCISE_INFORMATION_TB (EXERCISE_IDX, EXERCISE_NAME, EXERCISE_ENAME, EXERCISE_PARTS,
+		HOWTO_EXERCISE, HOWTO_EXERCISE2, EXERCISE_PICTURES, EXERCISE_VIDEO, CAUTION, REPETITION, SET_COUNT, REST_TIME)
+		VALUES ((SELECT NVL(MAX(EXERCISE_IDX), 0) + 1 FROM EXERCISE_INFORMATION_TB),
+				#{exerciseName}, #{exerciseEName}, #{exerciseParts}, #{howtoExercise}, #{howtoExercise2}, #{exercisePictures},
+				#{exerciseVideo}, #{caution}, #{repetition}, #{setCount}, #{restTime})
+	</insert>
+  	
+  	<!-- 게시글 수정 -->
+	<update id="updateExerciseInformation" parameterType="exerciseInformation">
+		UPDATE EXERCISE_INFORMATION_TB SET EXERCISE_NAME = #{exerciseName}, EXERCISE_PARTS = #{exerciseParts} WHERE EXERCISE_IDX = #{exerciseIdx}
+	</update>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="deleteExerciseInformation" parameterType="exerciseInformation">
+		DELETE FROM EXERCISE_INFORMATION_TB WHERE EXERCISE_IDX = #{exerciseIdx}
+	</delete>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

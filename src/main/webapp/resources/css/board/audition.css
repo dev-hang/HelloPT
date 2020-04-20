@@ -1,0 +1,267 @@
+* {
+     margin: 0px;
+     padding: 0px;
+}
+#wrap {
+     width: 100%;
+     margin: 100px auto 0 auto;
+}
+body{
+	text-align: center;
+}
+ul li {
+     list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+.bnimg{
+    width: 100%;
+}
+.banner {
+	width: 1140px;
+    margin: 0 auto;
+}
+.contents{
+    text-align: center;
+}
+/*textbox*/
+.textbox{
+    padding: 70px 0;
+    background-color: black;
+}
+.txtbold{
+    font-weight: 800;
+    font-size: 20px;
+    color: white;
+    margin-bottom: 30px;
+}
+.txt{
+    margin-bottom: 20px;
+}
+.youtubebox{
+    width: 540px;
+    height: 285px;
+    border: 1px solid black;
+    text-align: center;
+    margin: 0 auto;
+}
+/*tab 부분*/
+.tabbox{
+    height: 50px;
+    background-color: #fff;
+}
+#tab li{
+    display: inline-block;
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+}
+
+.tab_li{
+	color: black;
+}
+
+/*view 공통*/
+.view{
+    padding: 50px;
+    height: 500px;
+}
+
+.viewh2_white{
+    color: #fff;
+    font-weight: 500;
+    font-size: 36px;
+    text-align: left;
+}
+.viewtext_white{
+    font-size: 20px;
+    border-top: 1px solid #fff;
+    padding-top: 20px;
+    margin: 35px 0px;
+    text-align: left;
+}
+.viewh2_black{
+    color: white;
+    font-weight: 500;
+    font-size: 36px;
+    text-align: left;
+}
+.viewtext_black{
+    font-size: 20px;
+    border-top: 1px solid #000;
+    padding-top: 20px;
+    margin: 35px 0px;
+    text-align: left;
+}
+
+.view_img{
+    width: 100%;
+    height: 400px;
+
+}
+/*view01*/
+#view01{
+    background-color: #000;
+    height: 1885px;
+}
+#view01 p{
+    color: #fff;
+}
+.view01_inner1{
+    max-width: 1140px;
+    margin: 0 auto;
+}
+.view01_inner2{
+    max-width: 1140px;
+    margin: 0 auto;
+    height: 230px;
+}
+.inner2_box{
+    float: left;
+    width: 490px;
+    text-align: left;
+}
+.inner2_box:first-child{
+    margin-right: 160px;
+}
+.inner2_num{
+    color: #adb5bd !important;
+    font-size: 20px;
+    margin: 20px 0;
+}
+.inner2_txt{
+    font-size: 17px;
+    font-weight: bold;
+}
+.innert2_small{
+    font-size: 14px;
+    font-weight: normal;
+}
+.innert2_small.txtcolor{
+    color: #dc3545 !important;
+
+}
+.inner2_gray{
+    color: #adb5bd !important;
+    margin: 20px 0;
+}
+.view01_inner3{
+    clear: both;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+.inner3_box{
+    float: left;
+    width: 290px;
+    text-align: left;
+    margin-right: 135px;
+}
+.inner3_box:last-child{
+    margin-right: 0px;
+}
+/*view02*/
+#view02{
+    height: 1020px;
+}
+.view02_inner1{
+    max-width: 1140px;
+    margin: 0 auto;
+}
+.view02_imgbox{
+    margin: 50px 0 0 0;
+}
+/*view03*/
+#view03{
+   background-color: #000;
+    height: 900px; 
+}
+#view03 p{
+    color: #fff;
+}
+.view03_inner1{
+    max-width: 1140px;
+    margin: 0 auto 45px auto
+}
+.view03_inner2{
+    max-width: 1140px;
+    margin: 0 auto;
+}
+.view03_txtbox{
+    text-align: left;
+    margin: 0 0 60px 0;
+}
+.txtline{
+    border-left: 2px solid #dc3545;
+    padding-right: 15px;
+}
+/*view04*/
+#view04{
+    height: 400px;
+}
+.view04_inner1{
+    max-width: 1140px;
+    margin: 0 auto;
+}
+.dotbox{
+    margin: 70px 0;
+}
+.dot{
+    height: 150px;
+    width: 150px;
+    background-color: #f4c7cb;
+    border-radius: 50%;
+    display: inline-block;
+    line-height: 150px;
+    margin-right: 80px;
+    color: black;
+}
+.dot:last-child{
+    margin-right: 0px;
+    background-color: #dc3545;
+    color: white;
+}
+/*view05*/
+#view05{
+   background-color: #000;
+    height: 300px; 
+}
+.view05_txt{
+    color: #fff;
+    font-size: 40px;
+}
+.view05_a{
+    font-size: 20px;
+    color: #000;
+}
+.view05_a:hover, .view05_a:focus{
+    color: #fff;
+    transition: color 0.15s ease-in-out;
+}
+.view05_btn{
+    width: 240px;
+    height: 60px;
+    background-color:#dc3545;
+    line-height: 60px;
+    border-radius: 8px;
+    margin: 0 auto;
+}
+.view05_btn:hover{
+    background-color: #dc3545;
+    transition:background-color 0.15s ease-in-out;
+}
+
+ 
+
+
+
+
+
+
+
+
