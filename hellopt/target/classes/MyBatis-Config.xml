@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 여러가지 기본 옵션을 지정합니다. -->
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+	
+	<typeAliases>
+		<typeAlias type="com.bit.hellopt.vo.reviewboard.RBoardVO" alias="rBoard"/>
+		<typeAlias type="com.bit.hellopt.vo.user.User" alias="User"/>
+		<typeAlias alias="exerciseInformation" type="com.bit.hellopt.vo.exercise.ExerciseInformationVO" />
+		<typeAlias alias="exerciseInformationTip" type="com.bit.hellopt.vo.exercisetip.ExerciseInformationTipVO" />
+		<typeAlias alias="ExerciseMapper" type="com.bit.hellopt.data.exercise.ExerciseMapper" />
+		<typeAlias alias="ExerciseTipMapper" type="com.bit.hellopt.data.exercisetip.ExerciseTipMapper" />
+		
+		<!-- 모임개설 관련 -->
+		<typeAlias alias="CategoryCodeVO" type="com.bit.hellopt.vo.meeting.CategoryCodeVO" />
+		<typeAlias alias="LocalVO" type="com.bit.hellopt.vo.meeting.LocalVO" />
+		<typeAlias alias="MeetingVO" type="com.bit.hellopt.vo.meeting.MeetingVO" />
+		<typeAlias alias="MeetingMapper" type="com.bit.hellopt.data.MeetingMapper" />
+
+		<typeAlias alias="CalendarVO" type="com.bit.hellopt.vo.calendar.CalendarVO" />
+		<typeAlias alias="CalendarMapper" type="com.bit.hellopt.data.CalendarMapper" />
+		<!-- 
+		 -->
+	</typeAliases>
+
+</configuration>

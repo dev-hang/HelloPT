@@ -1,0 +1,122 @@
+article {
+    max-width: 1300px;
+    min-width: 360px;
+    height: 800px;
+    width: 1300px;
+    /* border: 1px solid #7d7d7d; */
+    margin: 110px auto 0 auto;
+    padding: 2em;
+}
+
+.setup, .join, input[type=button] {
+    padding: 5px 0 7px;
+    border: 1px solid #7d7d7d; 
+    margin: 0 auto;
+    margin-top: 30px;
+    background: #b4000f;
+    font-family: 'Nocturne Serif','Noto Sans KR','Malgun Gothic', dotum, sans-serif;
+    font-size: 15px;
+    -webkit-appearance:none;
+    border-radius: 0;
+    color: #fff;
+    width: 10%;
+}
+
+.join {
+    width: 100%;
+    margin: 10px 0;
+}
+
+strong {
+    color: rgb(204, 14, 14);
+    font-family: inherit;
+    font-weight: normal;
+}
+
+tr, td {
+    vertical-align: top;
+    padding: .7em 1.4em;
+    border-top: 1px dotted #BBA9A9;
+    border-right: 1px dotted #BBA9A9;
+    color: #fff!important;
+}
+
+table, tr, td {
+	width: 100%!important;
+}
+
+iframe {
+	height: 719px;
+	width: 100%;
+	/* overflow-y: scroll;
+	overflow: hidden; */
+	box-sizing: border-box;
+	border: 1px solid gray;
+}
+
+.video-info {
+	width: 70%;
+  	float: left;
+}
+
+#class-name {
+	padding: 20px;
+	background: #fff;
+	margin: 3px 0;
+}
+
+#class-name p {
+	color: black;
+}
+	
+#chat-container {
+	width: 29%;
+	overflow: hidden;
+	float: right;
+}
+
+
+@media all and (max-width: 800px) {
+    body {
+        font-size: 1.1em;
+    }
+
+    article {
+        margin: 1.5em auto 0 auto;
+        padding: 1.5em;
+    }
+
+    .experiment {
+        margin: 1em .2em;
+    }
+}
+
+@media all and (max-width: 500px) {
+    body {
+        font-size: .9em;
+    }
+
+    article {
+        margin: .5em auto 0 auto;
+        padding: .5em;
+    }
+
+    .experiment {
+        margin: 1em .1em;
+    }
+}
+
+@media all and (max-width: 300px) {
+    body {
+        font-size: .8em;
+    }
+
+    article {
+        margin: 0 auto 0 auto;
+        padding: 0;
+    }
+
+    .experiment {
+        margin: 1em 0;
+    }
+}

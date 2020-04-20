@@ -1,0 +1,143 @@
+      <div class="preview-image">
+        <div id="sub"class="text-wrap">
+            <h4>서브 이미지</h4>
+        </div>
+    </div>
+    <p class="text">
+          상품의 다양한 이미지컷을
+        <br>
+            최대 2장까지 넣을 수 있습니다.
+    </p>
+    <div class="imgDisplay">
+        <div class="view_area" style="display: flex;"></div>
+        <img class="subImage"  src="/app/resources/img/default_image.png" width="150px;" height="150px;"/>
+        <div class="filebox bs3-primary">
+            <label for="subImage">업로드</label>
+            <input type="file" name="subImage" id="subImage"accept="image/jpeg,image/gif,image/png" multiple>		
+        </div>
+          </div> 	
+                                          
+                                          
+//다중 파일 업로드 새로함
+	$('#subImage').on('change',function() {
+		var form = $("#product")[0];
+		console.log(form);
+		var data = new FormData(form);
+		$.ajax({
+			type : 'POST',
+			enctype : 'multipart/form-data',
+			url : "subImageUpload.do",
+			data : data,
+			processData : false,
+			contentType : false,
+			success : function(json){
+					console.log(json);
+					$('.subImage').remove();
+					
+				for (var i in json) {
+					$('.view_area').append(
+							"<div class='id'><img style='width:150px; height:150px;' src=/app/resources/img/"+json[i]+"><button type='button' onclick='imgDel(this);'>삭제하기</button></div>");
+				}
+			},
+			error : function(jqXHR, textStatus, errorThrown){
+				alert("오류가 발생하였습니다.");
+			}
+		});
+	});
+	
+	//서브파일 이미지 업로드 삭제
+	function imgDel(e) {
+			var imgs = e.previousElementSibling;
+			var src = imgs.src;
+			console.log(imgs.src);
+			var img = src.split('/');
+			var fileName = img[6];
+			console.log(fileName);
+			$.ajax({
+				type : 'post',
+				url : "subImageUploadDel.do",
+				data : {
+					fileName : fileName
+				},
+				success : function(e) {
+					console.log(e);
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+					alert("오류가 발생하였습니다.");
+				}
+			});
+			var imgtag = $(e).parent(); //<div><img></div>태그에서 div태그
+			var imgtag2 = $(e).parent().parent();
+			imgtag.remove();
+			console.log($(".id").length);
+			if($('.id').length == 0){
+				imgtag2.append('<img class="subImage" src="/app/resources/img/default_image.png" width="150px;" height="150px;"/>');
+			}
+		};
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+     @RequestMapping(value="/admin/subImageUpload.do", method=RequestMethod.POST)
+	@ResponseBody
+	public List<String> subImageUpload(MultipartHttpServletRequest multiFile) throws IOException{
+		
+		System.out.println("안녕");
+		List<String> list = new ArrayList<String>();
+		String filePath = "C:/Users/bitcamp/Documents/GitHub/honjok/src/main/webapp/resources/img/";
+		List<MultipartFile> fileList = multiFile.getFiles("subImage");
+		Iterator<String> fileNames = multiFile.getFileNames();
+		System.out.println("src value : " + fileNames);
+		
+		for(MultipartFile multiFile2 : fileList) {
+			//파일 실제이름 
+			String fileName = multiFile2.getOriginalFilename();
+    		System.out.println(fileName);
+			
+			//파일 이름 하나씩 저장
+			System.out.println(fileList);
+			File file = new File(filePath, fileName);
+			if( multiFile2.getSize() != 0) {
+				if(!file.exists()) {
+					if(file.getParentFile().mkdir()) {
+						file.createNewFile();
+					}
+				}
+			}		
+			fileName = UUID.randomUUID().toString();
+			System.out.println(fileName);
+			multiFile2.transferTo(new File(filePath, fileName));
+				
+			
+			AdminVO vo = new AdminVO();
+			list.add(fileName);
+			vo.setSubImg(list);
+			System.out.println(list);
+			System.out.println(vo);
+		}
+		
+		return list;
+	}
+	
+	@RequestMapping(value="/admin/subImageUploadDel.do", method=RequestMethod.POST)
+	@ResponseBody
+	public void subImageUploadDel(String fileName) {
+		System.out.println("데이터");
+		System.out.println(fileName);
+		
+		String filePath = "C:/Users/bitcamp/Documents/GitHub/honjok/src/main/webapp/resources/img/"+fileName;
+		System.out.println(filePath);
+		
+		File file = new File(filePath);
+		if(file.exists()==true) {
+			file.delete();
+		}
+	}
+	
+}

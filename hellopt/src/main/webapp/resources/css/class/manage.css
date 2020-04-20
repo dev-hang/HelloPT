@@ -1,0 +1,26 @@
+	th,td {
+		text-align: center;
+	}
+	a {
+		color: #fff;
+		width: 200px;
+	    display: inline-block;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	}
+	a:hover {
+		color: #820610;
+		text-decoration: none;
+	}
+	.manage-btn {
+		width: 49%;
+	    padding: 5px 0 7px;
+	    margin: 20px auto;
+	    background: #b4000f;
+	    font-family: 'Nocturne Serif','Noto Sans KR','Malgun Gothic', dotum, sans-serif;
+	    font-size: 15px;
+	    -webkit-appearance: none;
+	    border-radius: 0;
+	    color: #fff;
+	}

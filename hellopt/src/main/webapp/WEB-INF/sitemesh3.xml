@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+    <!-- 사이트메쉬 틀을 적용시킨 페이지. WEB-INF 아래 경로 및 파일명은 프로젝트에서 설정하는대로 -->
+ <mapping path="/*" decorator="/WEB-INF/views/decorator.jsp" />
+
+<!-- 사이트메쉬 예외 처리 -->
+<mapping path="/calenderWrite" exclude="true"/>
+<mapping path="/calendarOne" exclude="true"/>
+<mapping path="/calendarUpdate" exclude="true"/>
+<mapping path="/pop" exclude="true"/>
+</sitemesh>

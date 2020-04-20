@@ -1,0 +1,104 @@
+보류 슬라이드
+--------------
+<div class="slider-holder">
+    <span id="slider-image-1"></span>
+    <span id="slider-image-2"></span>
+    <span id="slider-image-3"></span>
+  
+    <div class="image-holder">
+        <img src="${pageContext.request.contextPath}/resources/images/meeting/sample5.jpg" class="slider-image" />
+        <img src="${pageContext.request.contextPath}/resources/images/meeting/sample4.jpg" class="slider-image" />
+        <img src="${pageContext.request.contextPath}/resources/images/meeting/sample3.jpg" class="slider-image" />
+    </div>
+  
+    <div class="button-holder">
+        <a href="#slider-image-1" class="slider-change"><img src="${pageContext.request.contextPath}/resources/images/meeting/sample5.jpg" class="slider-change-image" /></a>
+        <a href="#slider-image-2" class="slider-change"><img src="${pageContext.request.contextPath}/resources/images/meeting/sample4.jpg" class="slider-change-image" /></a>
+        <a href="#slider-image-3" class="slider-change"><img src="${pageContext.request.contextPath}/resources/images/meeting/sample3.jpg" class="slider-change-image" /></a>
+    </div>
+</div>
+
+
+-------------
+css
+-------------
+
+/* Slider */
+
+
+.slider-holder {
+     width: 400px;
+     margin-left: 37px;
+     overflow: hidden;
+  }
+  
+.image-holder {
+     width: 2100px;
+     height: 165px;
+     clear: both;
+     position: relative;
+     
+     -webkit-transition: left 2s;
+     -moz-transition: left 2s;
+     -o-transition: left 2s;
+     transition: left 2s;
+  }
+  
+.slider-image {
+    float: left;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    height: 400px;
+    width: 400px;
+  }
+  
+#slider-image-1:target ~ .image-holder {
+    left: 0px;
+  }
+  
+#slider-image-2:target ~ .image-holder {
+    left: -400px;
+  }
+  
+#slider-image-3:target ~ .image-holder {
+     left: -800px;
+  }
+
+.button-holder {
+    margin-top: 3px;
+}
+/*
+.slider-change
+{
+  display: inline-block;
+  height: 97px;
+  width: 97px;
+}
+*/
+.slider-image-1 {
+  display: inline-block;
+  height: 133px;
+  width: 133px;
+}
+.slider-image-2 {
+  display: inline-block;
+  height: 133px;
+  width: 133px;
+}
+.slider-image-3 {
+  display: inline-block;
+  height: 133px;
+  width: 133px;
+}
+.slider-change-image
+{
+  height: 133px;
+  width: 133px;
+}
+
+
+-------------
+js
+-------------
+없음

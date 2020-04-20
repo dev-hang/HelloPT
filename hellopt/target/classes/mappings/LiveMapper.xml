@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bit.hellopt.data.LiveMapper">
+	<select id="countClasses" resultType="int">
+		SELECT COUNT(*) FROM CLASS_TB
+	</select>
+	
+	<select id="moreClassList" parameterType="int" resultType="com.bit.hellopt.vo.live.LiveClass">
+		SELECT *
+		FROM (SELECT ROWNUM R, C.*
+		        FROM (SELECT *
+		              FROM CLASS_TB
+		              ORDER BY CLASS_IDX DESC
+		             ) C
+			)
+		WHERE R BETWEEN #{end}-2 AND #{end}
+	</select>
+	
+	<select id="randomClass" resultType="com.bit.hellopt.vo.live.LiveClass">
+		SELECT *
+				FROM (SELECT ROWNUM R, C.*
+				        FROM (SELECT *
+				              FROM CLASS_TB
+				              ORDER BY CLASS_IDX DESC
+				             ) C
+					)
+				WHERE R = (
+					SELECT ROUND(DBMS_RANDOM.VALUE((
+						SELECT *
+								FROM (SELECT MAX(ROWNUM) R
+								        FROM (SELECT *
+								              FROM CLASS_TB
+								              ORDER BY CLASS_IDX DESC
+								             ) C
+									)),
+						(SELECT *
+								FROM (SELECT MIN(ROWNUM) R
+								        FROM (SELECT *
+								              FROM CLASS_TB
+								              ORDER BY CLASS_IDX DESC
+								             ) C
+									))
+						)) RA from dual
+					)
+	</select>
+</mapper>

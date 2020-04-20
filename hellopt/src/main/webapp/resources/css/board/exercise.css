@@ -1,0 +1,209 @@
+body {
+	background-color: #1e1e1e;
+	color: #fff;
+}
+
+#wrap {
+	width : 100%;
+	margin: 100px auto 0 auto;
+}
+
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+/* #table { display: table; width: 100%;}
+.row1 {display: table-row;}
+.cell {display: table-cell; padding: 3px; border-bottom: 1px solid #DDD;}
+*/
+
+/* exerciseInfoList page */
+.exercisebox_banner {
+	width: 100%;
+	height: 170px;
+}
+.bannertxtbox {
+	width: 1104px;
+	margin: 0px auto;
+}
+
+.bannertxt {
+	padding: 65px 40px 40px 40px;
+}
+
+.bannertxt_big {
+	font-size: 33px;
+	font-weight: bold;
+}
+
+.exercise {
+	width: 283px;
+	height: 450px;
+	position: relative;
+	display: inline-block;
+	margin-right: 56px;
+}
+
+
+/* 검색 폼 위치 설정 */
+.searchForm {
+	position: absolute;
+	right: 550px;
+	top: 150px;	
+}
+
+.row {
+	text-align: center;
+}
+
+.preclass {
+	width: 792px;
+	height: 280px;
+}
+
+.exercise_caption {
+	position: absolute;
+    bottom: 25px;
+    left: 0;
+    width: 283px;
+    height: 150px;
+    background-color: black;
+    opacity: 0.7;
+    padding: 15px;
+	
+}
+
+.captiontitle {
+    color: white;
+    font-weight: 800;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.captiontxt {
+	font-size: 14px;
+    color: white;
+    overflow: hidden;
+}
+
+/* exerciseInfo 상세보기창 */
+.exercisebox {
+	margin: 20px auto;
+	width: 1024px;
+}
+
+.exerciseImg {
+	float: left;
+	width: 210px;
+	margin-right: 20px;
+}
+
+.exerciseImg_img {
+	width: 210px;
+	height: 315px;
+}
+
+.nick {
+    padding: 0px 10px;
+    color: #00e676;
+    font-weight: normal;
+    font-size: 17px;
+}
+
+.exercisetitle {
+    border-top: 2px solid #fff;
+    border-bottom: 1px solid #424242;
+    padding: 20px 0px 20px 0px;
+    font-size: 2em;
+}
+
+.exercise_video {
+	margin: 20px 0px;
+}
+
+.exercise_video_txt {
+	padding-bottom: 8px;
+	font-size: 2em;
+	position: relative;
+	left: 230px;
+}
+
+.exercise_video_box {
+	width: 592px;
+	height: 450px;
+	margin: 20px auto;
+	border: 1px solid #424242;
+}
+
+.exercise_dd {
+	width: 592px;
+	margin: 20px auto;
+	text-align: center;
+}
+
+.exerhow {
+	font-size: 2em;
+}
+
+.exercau {
+	font-size: 2em;
+}
+
+#exerhow {
+	font-size: 1.2em;
+}
+
+#exercau {
+	font-size: 1.2em;
+}
+
+
+/* youtube 박스 크기 */
+
+.cente {
+	text-align: center;
+}
+
+
+/* .exercise 주석할수도 있음  */
+.exerciseImg_img:hover img {
+	-webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    -webkit-transition: all 0.8s;
+    transition: all 0.8s;
+    opacity:1;
+}
+
+.exerciseImg_img:hover .exercise_caption {
+	opacity: 1;
+	bottom: 10px;
+}
+
+/* paging */
+tr {
+	text-align: center;
+	padding: 4px 10px;
+	background-color: agenda;
+}
+
+.disable {
+	padding: 3px 7px;
+	border: 1px solid silver;
+	color: silver;
+}
+
+.now {
+	padding: 3px 7px;
+	border: 1px solid #ff4aa5;
+	background: #b4000f;
+	color: white;
+	font-weight: bold;
+}
+
+.notnow {
+	padding: 3px 7px;
+	
+}
+
